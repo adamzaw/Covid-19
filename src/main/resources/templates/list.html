@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid-19 Statistic by Country</title>
+</head>
+<body>
+<h1>Covid-19 Statistic by Country</h1>
+<div>
+    <ul th:each="country: ${list}">
+        <li>Country:</li>
+        <li th:text="${country.location}"></li>
+        <li>Confirmed:</li>
+        <li th:text="${country.confirmed}"></li>
+        <li>Deaths:</li>
+        <li th:text="${country.deaths}"></li>
+        <li>Recovered:</li>
+        <li th:text="${country.recovered}"></li>
+        <li>Active:</li>
+        <li th:text="${country.active}"></li>
+    </ul>
+</div>
+</body>
+</html>
