@@ -1,6 +1,8 @@
 package zawadka.adam.covid19.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +24,7 @@ public class ApiController {
     @Autowired
     CovidByCountryMapper covidByCountryMapper;
 
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     @GetMapping("/api/list")
     public CovidByCountryDto byCountry() throws JsonProcessingException {
 
@@ -29,7 +32,7 @@ public class ApiController {
         return covidByCountryMapper.covidByCountryDto();
 
     }
-
+    @ApiOperation(value = "", authorizations = { @Authorization(value="jwtToken") })
     @GetMapping("/api/total")
     public CovidTotalDto total() throws JsonProcessingException {
 
