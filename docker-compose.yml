@@ -1,7 +1,7 @@
 version: '3.6'
 
 services:
-  db:
+  db-covid19:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -13,17 +13,19 @@ services:
     expose:
       - 3306
 
-  app:
+  api-covid19:
     build: .
     image: api-covid19:latest
     ports:
       - 8080:8080
     depends_on:
-      - "db"
+      - "db-covid19"
     command: sh -c "/wait && /api-covid19"
     environment:
-        - SPRING_DATASOURCE_URL=jdbc:mysql://db/api_covid19?serverTimezone=UTC&autoReconnect=true&useSSL=false
-        - WAIT_HOSTS=db:3306
-        - WAIT_HOSTS_TIMEOUT=300
-        - WAIT_SLEEP_INTERVAL=30
-        - WAIT_HOST_CONNECT_TIMEOUT=30
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-covid19/api_covid19?serverTimezone=UTC&autoReconnect=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=test
+      - SPRING_DATASOURCE_PASSWORD=test
+      - WAIT_HOSTS=db:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
