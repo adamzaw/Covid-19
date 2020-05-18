@@ -1,8 +1,8 @@
 package zawadka.adam.covid19.model;
 
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Parameter;
 
 import javax.persistence.*;
 
@@ -10,10 +10,12 @@ import javax.persistence.*;
 @Table(name = "Users")
 public class UserInfo {
 
+    @Hidden
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Parameter(example = "swagger@gmail.com")
     private String username;
 
     private String password;
