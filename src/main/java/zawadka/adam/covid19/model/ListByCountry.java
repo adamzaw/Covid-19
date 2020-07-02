@@ -8,12 +8,25 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ListByCountry {
 
     @JsonProperty("data")
     private List<CovidByCountry> covidList;
+
+    public ListByCountry() {
+    }
+
+    public ListByCountry(List<CovidByCountry> covidList) {
+        this.covidList = covidList;
+    }
+
+    public List<CovidByCountry> getCovidList() {
+        return covidList;
+    }
+
+    public void setCovidList(List<CovidByCountry> covidList) {
+        this.covidList = covidList;
+    }
 }

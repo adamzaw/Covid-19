@@ -6,12 +6,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Total {
 
     @JsonProperty("data")
     private Covid covid;
+
+    public Total() {
+    }
+
+    public Total(Covid covid) {
+        this.covid = covid;
+    }
+
+    public Covid getCovid() {
+        return covid;
+    }
+
+    public void setCovid(Covid covid) {
+        this.covid = covid;
+    }
 }
