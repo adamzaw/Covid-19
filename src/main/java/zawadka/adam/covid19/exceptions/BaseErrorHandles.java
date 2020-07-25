@@ -16,4 +16,9 @@ public class BaseErrorHandles {
     public ResponseEntity<?> handleException(ValidationException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMsg());
     }
+    @ResponseBody
+    @ExceptionHandler(value = NoSuchCountryExemption.class)
+    public ResponseEntity<?> handleException(NoSuchCountryExemption exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMsg());
+    }
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Covid {
+public abstract class Covid {
     @JsonProperty("confirmed")
     private int confirmed;
     @JsonProperty("deaths")
@@ -19,4 +19,6 @@ public class Covid {
     private int recovered;
     @JsonProperty("active")
     private int active;
+
+    public abstract boolean equals(String o);
 }
