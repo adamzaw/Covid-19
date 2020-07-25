@@ -10,6 +10,6 @@ public class NoSuchCountryExemption extends RuntimeException {
     }
 
     public String getMsg() {
-        return "NoSuchCountryExemption: value=" + msg;
+        return "NoSuchCountryExemption: " + msg;
     }
 }
